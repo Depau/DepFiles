@@ -19,3 +19,7 @@ alias tmux="tmux -2"
 alias less="most -w"
 # cd to repo root
 alias gtop="cd \"\$(git rev-parse --show-toplevel)\""
+# "Tabbed" vim
+alias tvim="vim -p"
+# Because JavaScript
+alias porcodio="npm run test"
