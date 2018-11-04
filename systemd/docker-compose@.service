@@ -1,6 +1,8 @@
 [Unit]
 Description=%i docker service
 After=network.target docker.service
+OnFailure=restart-on-failure@%n
+#RestartSec=3
 
 [Service]
 Type=oneshot

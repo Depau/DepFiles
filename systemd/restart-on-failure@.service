@@ -1,0 +1,9 @@
+[Unit]
+Description=Restart a failed service, implements Restart on-failure for simple/oneshot
+# Enable by specifying OnFailure=restart-on-failure@%n.service AND #RestartSec=xxx
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sh -c 'systemctl set-environment SEC="`systemctl cat %i|grep -Po \\"^#RestartSec=\\K(\\d)*(?=s?$$)\\"`"'
+ExecStart=/bin/sleep ${SEC}
+ExecStart=-/usr/bin/systemctl restart %i
